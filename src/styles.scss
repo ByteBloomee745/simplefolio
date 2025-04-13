@@ -1,18 +1,40 @@
+// POLICES
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap');
 @import "./sass/vendors/bootstrap.scss";
 
-@import "./sass/abstracts/mixins";
-@import "./sass/abstracts/variables";
-@import "./sass/abstracts/helpers";
+@import "./sass/abstracts/_mixins";
+@import "./sass/abstracts/_variables";
+@import "./sass/abstracts/_helpers";
 
-@import "./sass/base/base";
-@import "./sass/base/typography";
+@import "./sass/base/_base";
+@import "./sass/base/_typography";
 
-@import "./sass/components/buttons";
+@import "./sass/components/_buttons";
+@import "./sass/components/_hero";
+@import "./sass/components/_menu";
 
-@import "./sass/layout/footer";
-@import "./sass/layout/sections";
 
-@import "./sass/sections/about";
-@import "./sass/sections/contact";
-@import "./sass/sections/hero";
-@import "./sass/sections/projects";
+
+
+@import "./sass/layout/_footer";
+@import "./sass/layout/_sections";
+
+
+
+@import "./sass/sections/_about";
+@import "./sass/sections/_contact";
+@import "./sass/sections/_projects";
+@import "./sass/sections/_hero";
+@import "./sass/sections/header";
+@import "./sass/sections/skills";
+
+
+
+
+// Polices Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+// ANIMATIONS
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }}

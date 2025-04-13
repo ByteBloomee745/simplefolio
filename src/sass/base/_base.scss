@@ -1,28 +1,18 @@
-html {
-  font-size: 62.5%;
-
-  &.sr .load-hidden {
-    visibility: hidden;
-  }
-}
-
 body {
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  scroll-behavior: smooth;
+  background-color: $background-color;
+  color: $text-color;
+  font-family: $font-secondary;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
 }
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: $light-grey;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: $primary-color;
+
+.no-scroll {
+  overflow: hidden;
 }

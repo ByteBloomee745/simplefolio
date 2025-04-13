@@ -1,15 +1,26 @@
-// COLORS
-$primary-color: #02aab0;
-$secondary-color: #00cdac;
+// Palette féminine complète
+$primary-color: #FF9EB5;       // Rose poudré
+$secondary-color: #A5D8D1;     // Turquoise pastel
+$accent-color: #E8B4BC;        // Rose vintage
+$background-color: #FFF9FB;    // Blanc rosé
+$text-color: #5A4A42;          // Brun doux
+$light-gray: #F0E6EA;          // Gris rosé
+$light-grey: $light-gray;      // Alias
+$white-color: #ffffff; // or any color code you prefer
+$black: #000000;
 
-$white-color: #fff;
+// Alias de compatibilité
+$white-color: $white;
+$dark-blue-text: $text-color;
+$dark-grey: #333333; // or any grey color code you prefer
 
-$dark-grey: #333333;
-$light-grey: #d2d2d2;
 
-$dark-blue-text: #272341; // For Headings
 
 // FONT SIZE
 $default-font-size: 1.6rem;
 $big-font-size: 4rem;
 $mid-font-size: 2.5rem;
+// src/sass/abstracts/_variables.scss
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Playfair Display', serif; // <- Ajoute ça si ce n'est pas défini
+

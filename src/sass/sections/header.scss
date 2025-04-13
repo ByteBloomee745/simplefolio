@@ -1,0 +1,38 @@
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba($background-color, 0.98);
+    box-shadow: 0 2px 15px rgba($text-color, 0.08);
+    padding: 1.2rem 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @extend .container;
+    }
+  
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: $text-color;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+  
+      &:hover {
+        color: $primary-color;
+        transform: scale(1.05);
+      }
+    }
+  
+    .btn-download {
+      @extend .btn;
+      @extend .btn-primary;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
