@@ -1,38 +1,76 @@
 .main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba($background-color, 0.98);
-    box-shadow: 0 2px 15px rgba($text-color, 0.08);
-    padding: 1.2rem 0;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba($background-color, 0.98);
+  box-shadow: 0 2px 15px rgba($text-color, 0.08);
+  padding: 1.2rem 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @extend .container;
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $text-color;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
-  
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      @extend .container;
-    }
-  
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: $text-color;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
-  
-      &:hover {
-        color: $primary-color;
-        transform: scale(1.05);
-      }
-    }
-  
-    .btn-download {
-      @extend .btn;
-      @extend .btn-primary;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.9rem;
+
+    &:hover {
+      color: $primary-color;
+      transform: scale(1.05);
     }
   }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; // Espace entre le bouton et le menu burger
+  }
+
+  .btn-download {
+    @extend .btn;
+    @extend .btn-primary;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    margin-right: 1rem; // Espace avant le menu burger
+  }
+
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1001;
+    
+    .burger-line {
+      width: 24px;
+      height: 2px;
+      background: $text-color;
+      margin: 3px 0;
+      transition: all 0.3s ease;
+    }
+
+    &.open {
+      .burger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .burger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .burger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}

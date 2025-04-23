@@ -1,28 +1,53 @@
 .hero {
   min-height: 100vh;
+  background-color: $bleu-marine; // #003366
+  color: $blanc; // #FFFFFF
   display: flex;
   align-items: center;
   padding-top: 6rem;
   position: relative;
+  text-align: center;
+
+  &-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
 
   &-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: $text-color;
-    
-    &::after {
-      content: '🌸';
-      margin-left: 1rem;
-    }
+    margin-bottom: 1.5rem;
+    color: $or-metallique; // #D4AF37
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: $blanc;
   }
 
   .btn-more {
-    background: $white;
-    color: $primary-color;
-    border: 1px solid rgba($primary-color, 0.3);
+    background: $rose-poudre; // #F2C6D4
+    color: $bleu-marine; // #003366
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 
     &:hover {
-      background: darken($white, 5%);
+      background: darken($rose-poudre, 10%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
   }
 }

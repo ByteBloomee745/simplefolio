@@ -1,246 +1,263 @@
+// skills.scss - Version harmonisée avec la palette
 .skills-section {
-    padding: 5rem 0;
-    background-color: #F5F5F5;
+    padding: 6rem 0;
+    background-color: $blanc;
     position: relative;
     overflow: hidden;
-
+  
     .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
-
+  
     .section-title {
-        text-align: center;
-        font-family: 'Playfair Display', serif;
-        color: #000; // Noir
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
-
-        &::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: #00CED1; // Turquoise clair
-            margin: 1rem auto 0;
-        }
+      text-align: center;
+      font-family: $font-title;
+      color: $bleu-marine;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+  
+      &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: $or-metallique;
+        margin: 1rem auto 0;
+      }
     }
-}
-
-// Filtres
-.skills-filter {
+  }
+  
+  // Filtres
+  .skills-filter {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
-
+  
     .filter-btn {
-        padding: 0.6rem 1.2rem;
-        background: #D3D3D3; // Gris clair
-        border: none;
-        border-radius: 50px;
-        font-family: 'Poppins', sans-serif;
-        color: #000; // Noir
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 0.9rem;
-
-        &:hover, &.active {
-            background: #00CED1; // Turquoise clair
-            color: #FFF; // Blanc
-
-        }
+      padding: 0.6rem 1.5rem;
+      background: transparent;
+      border: 2px solid $bleu-marine;
+      border-radius: 50px;
+      font-family: $font-body;
+      color: $bleu-marine;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      font-weight: 600;
+  
+      &:hover, &.active {
+        background: $bleu-marine;
+        color: $blanc;
+        box-shadow: 0 5px 15px rgba($bleu-marine, 0.2);
+      }
     }
-}
-
-// Compétences Techniques
-.hard-skills {
+  }
+  
+  // Compétences Techniques
+  .hard-skills {
     margin-bottom: 4rem;
-
+  
     h3 {
-        color: #000;
-        font-family: 'Playfair Display', serif;
-        margin-bottom: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-
-        i {
-            color: #00CED1; // Turquoise clair
-        }
+      color: $bleu-marine;
+      font-family: $font-title;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.8rem;
+  
+      i {
+        color: $or-metallique;
+        font-size: 1.5rem;
+      }
     }
-}
-
-.skills-grid {
+  }
+  
+  .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.skill-card {
-    background: #FFF; // Blanc
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .skill-card {
+    background: $blanc;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba($bleu-marine, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    border: 1px solid rgba($bleu-marine, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+  
+    &.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba($bleu-marine, 0.1);
+      border-color: rgba($or-metallique, 0.3);
+    }
+  
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, $bleu-marine 0%, lighten($bleu-marine, 10%) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: $blanc;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 15px rgba($bleu-marine, 0.2);
+    }
+  
+    h4 {
+      color: $bleu-marine;
+      font-family: $font-title;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: $rose-poudre;
+      }
+    }
+  
+    .skill-items {
+      list-style: none;
+      padding-left: 0;
+  
+      li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.8rem;
+        color: darken($gris-clair, 50%);
+        font-family: $font-body;
+        font-size: 1rem;
+  
+        &::before {
+          content: '▹';
+          position: absolute;
+          left: 0;
+          color: $or-metallique;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+  
+  // Compétences Personnelles
+  .soft-skills {
+    h3 {
+      color: $bleu-marine;
+      font-family: $font-title;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.8rem;
+  
+      i {
+        color: $rose-poudre;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .soft-skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .soft-skill-item {
+    background: $blanc;
     border-radius: 12px;
     padding: 1.8rem;
-    box-shadow: 0 5px 15px rgba(109, 129, 156, 0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    border: 1px solid #D3D3D3; // Gris clair
-    opacity: 0;
-    transform: translateY(20px);
-    color: #000; // Noir
-
-
-    &.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(109, 129, 156, 0.15);
-        border-color: #7FFFD4; // Vert d'eau
-    }
-
-    .skill-icon {
-        width: 60px;
-        height: 60px;
-        background: #00CED1; // Turquoise clair
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-        color: #FFF; // Blanc
-        font-size: 1.5rem;
-    }
-
-    h4 {
-        color: #000;
-        font-family: 'Playfair Display', serif;
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-    }
-
-    .skill-items {
-        list-style: none;
-        padding-left: 0;
-
-        li {
-            position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: lighten(#333, 10%);
-            font-family: 'Poppins', sans-serif;
-
-            &::before {
-                content: '•';
-                position: absolute;
-                left: 0;
-                color: #7FFFD4;
-                font-size: 1.2rem;
-            }
-        }
-    }
-}
-
-// Compétences Personnelles
-.soft-skills {
-    h3 {
-        color: #000;
-        font-family: 'Playfair Display', serif;
-        margin-bottom: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-
-        i {
-            color: #7FFFD4;
-        }
-    }
-}
-
-.soft-skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.soft-skill-item {
-    background: FFF;
-    border-radius: 12px;
-    padding: 1.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: flex-start;
-    box-shadow: 0 5px 15px rgba(109, 129, 156, 0.1);
+    box-shadow: 0 5px 20px rgba($bleu-marine, 0.05);
     transition: all 0.3s ease;
-    border: 1px solid #D3D3D3;
+    border: 1px solid rgba($bleu-marine, 0.1);
     opacity: 0;
     transform: translateY(20px);
-
+  
     &.visible {
-        opacity: 1;
-        transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
-
+  
     &:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(109, 129, 156, 0.15);
-        border-color: #00CED1;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba($bleu-marine, 0.1);
+      border-color: rgba($rose-poudre, 0.3);
     }
-
+  
     .soft-skill-icon {
-        flex-shrink: 0;
-        width: 40px;
-        height: 40px;
-        background: #B8C6E7;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: FFF;
-        font-size: 1rem;
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, $rose-poudre 0%, lighten($rose-poudre, 10%) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $bleu-marine;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba($rose-poudre, 0.2);
     }
-
+  
     .soft-skill-text {
-        margin: 0;
-        color: #000;
-        font-family: 'Poppins', sans-serif;
-        line-height: 1.6;
-
-        .highlight {
-            color: darken(#00CED1, 10%);
-            font-weight: 600;
-        }
+      margin: 0;
+      color: darken($gris-clair, 60%);
+      font-family: $font-body;
+      line-height: 1.7;
+      font-size: 1.05rem;
+  
+      .highlight {
+        color: $bleu-marine;
+        font-weight: 600;
+        font-style: italic;
+      }
     }
-}
-
-// Animation d'apparition
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-// Responsive
-@media (max-width: 768px) {
+  }
+  
+  // Responsive
+  @media (max-width: 768px) {
     .skills-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: 1fr;
     }
     
     .soft-skills-container {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
     }
     
     .skills-filter {
-        gap: 0.5rem;
-        
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-        }
+      gap: 0.5rem;
+      
+      .filter-btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.85rem;
+      }
     }
-}
+  
+    .skill-card, .soft-skill-item {
+      padding: 1.5rem;
+    }
+  }

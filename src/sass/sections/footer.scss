@@ -1,0 +1,51 @@
+.footer {
+    background: $bleu-marine;
+    color: $blanc;
+    padding: 3rem 0;
+    text-align: center;
+  
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      
+      a {
+        color: $blanc;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: $or-metallique;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  
+    .footer__text {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 1rem;
+      
+      a {
+        color: $or-metallique;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: $rose-poudre;
+        }
+      }
+    }
+  
+    .back-to-top {
+      color: $blanc;
+      margin-bottom: 2rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        color: $or-metallique;
+        transform: translateY(-3px);
+      }
+    }
+  }
