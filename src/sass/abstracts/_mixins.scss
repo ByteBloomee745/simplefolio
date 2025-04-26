@@ -81,3 +81,18 @@ ORDER: Base + Typography > Generar Layout + Grid > Page Layout > Components
     @content;
   }
 }
+// _mixins.scss
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin pseudo-cover {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

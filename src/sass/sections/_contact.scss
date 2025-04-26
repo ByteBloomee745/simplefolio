@@ -1,70 +1,106 @@
+
+// sass/sections/_contact.scss
 #contact {
-  $section-padding: 15rem 0 10rem 0;
-  $mobile-padding: 10rem 0;
-  
-  position: relative;
   background: linear-gradient(
-    135deg,
-    $primary-color 0%,
-    $secondary-color 100%
+    to bottom,
+    var(--bg-secondary) 0%,
+    color-mix(in srgb, var(--bg-secondary), black 10%) 100%
   );
-  color: $white-color;
-  padding: $section-padding;
-  margin: -10rem 0 -1px 0;
-  clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
-  
-  // Suppression du préfixe -webkit- qui n'est plus nécessaire pour clip-path
-  @include respond(tab-land) {
-    padding: $mobile-padding;
-    clip-path: none;
-    margin-top: 0;
-  }
-
-  .contact-wrapper {
-    margin-top: 3.2rem;
-    padding: 0 2rem;
-    backface-visibility: hidden;
-
-    &__text {
-      margin-bottom: 2.5rem;
-      font-size: 2.4rem;
-      
-      @include respond(phone) {
-        font-size: 2rem;
-      }
-    }
-
-    a {
-      font-size: inherit; // Hérite de la taille de police du parent
-    }
-  }
-}
-// Ajoutez ces styles à votre fichier SCSS existant
-.contact-links a {
   position: relative;
-  overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
-    background: radial-gradient(
-      circle at var(--mouse-x) var(--mouse-y),
-      rgba(white, 0.3) 0%,
-      transparent 80%
-    );
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(
+        circle at 20% 80%,
+        color-mix(in srgb, var(--accent-color), transparent 90%) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        color-mix(in srgb, var(--accent-color), transparent 90%) 0%,
+        transparent 50%
+      );
+    opacity: 0.05;
+    z-index: 0;
   }
-  
-  &:hover::before {
-    opacity: 1;
-  }
-}
 
-.contact-wrapper__heading span {
-  display: inline-block;
+  .contact-wrapper {
+    position: relative;
+    z-index: 1;
+    background: color-mix(in srgb, var(--bg-primary), transparent 10%);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 
+      0 10px 30px -10px var(--shadow-color),
+      inset 0 0 0 1px color-mix(in srgb, var(--text-primary), transparent 90%);
+    padding: 3rem;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 15px 40px -10px color-mix(in srgb, var(--accent-color), transparent 85%),
+        inset 0 0 0 1px color-mix(in srgb, var(--accent-color), transparent 70%);
+    }
+  }
+
+  .cta-btn--resume {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        width: 50%;
+      }
+    }
+  }
+
+  .section-title {
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 3px;
+    }
+  }
 }

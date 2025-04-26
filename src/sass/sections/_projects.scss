@@ -74,3 +74,55 @@
     }
   }
 }
+// sass/sections/_projects.scss
+[data-theme="dark"] {
+  #projects {
+    background-color: #121212; // Fond plus sombre que --bg-secondary
+
+    .section-title {
+      color: #f0f0f0 !important;
+      text-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
+    }
+
+    .project-wrapper__text {
+      color: #e0e0e0 !important;
+
+      .project-wrapper__text-title {
+        color: var(--accent-color) !important;
+      }
+    }
+
+    .thumbnail {
+      background-color: #1e1e1e;
+      border: 1px solid #333 !important;
+      box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+
+      &:hover {
+        box-shadow: 
+          0 8px 25px rgba(0, 0, 0, 0.6),
+          inset 0 0 0 1px var(--accent-color) !important;
+      }
+    }
+
+    .cta-btn--hero {
+      background-color: var(--accent-color) !important;
+      color: #121212 !important;
+      border: 1px solid var(--accent-color) !important;
+
+      &:hover {
+        background-color: lighten(#4361ee, 5%) !important;
+      }
+    }
+
+    .cta-btn--resume {
+      color: var(--accent-color) !important;
+      border-color: var(--accent-color) !important;
+
+      &:hover {
+        background-color: rgba(76, 201, 240, 0.1) !important;
+      }
+    }
+  }
+}
