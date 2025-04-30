@@ -1,134 +1,104 @@
-// footer.js
 document.addEventListener('DOMContentLoaded', function() {
-  // Effet parallaxe sur la vague
-  const initWaveParallax = () => {
-    const wave = document.querySelector('.footer__wave');
-    if (wave) {
-      window.addEventListener('scroll', function() {
-        const scrollPosition = window.pageYOffset;
-        wave.style.transform = `translateY(${scrollPosition * 0.2}px)`;
-      });
-    }
-  };
+  // 1. Fée interactive
+  const initFairyButton = () => {
+    const fairyButton = document.querySelector('.fairy-button');
+    if (!fairyButton) return;
 
-  // Back to top intelligent
-  const initBackToTop = () => {
-    const backToTop = document.querySelector('.back-to-top');
-    if (!backToTop) return;
+    window.addEventListener('scroll', () => {
+      fairyButton.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+      fairyButton.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
+    });
 
-    const toggleVisibility = () => {
-      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollPosition > 300) {
-        backToTop.style.opacity = '1';
-        backToTop.style.pointerEvents = 'auto';
-      } else {
-        backToTop.style.opacity = '0';
-        backToTop.style.pointerEvents = 'none';
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-    toggleVisibility();
-    
-    backToTop.addEventListener('click', (e) => {
+    fairyButton.addEventListener('click', (e) => {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    setInterval(() => Math.random() > 0.7 && createFairyDust(), 1000);
+  };
+
+  const createFairyDust = () => {
+    const fairy = document.querySelector('.fairy');
+    if (!fairy) return;
+
+    const dust = document.createElement('div');
+    dust.className = 'fairy-dust-particle';
+    Object.assign(dust.style, {
+      left: `${Math.random() * 60}px`,
+      top: `${Math.random() * 60}px`
+    });
+    fairy.appendChild(dust);
+    setTimeout(() => dust.remove(), 2000);
+  };
+
+  // 2. Fruits interactifs
+  const initSocialFruits = () => {
+    document.querySelectorAll('.social-fruit').forEach(fruit => {
+      fruit.addEventListener('mousemove', (e) => {
+        const rect = fruit.getBoundingClientRect();
+        fruit.style.transform = `
+          rotateX(${(e.clientY - rect.top - rect.height/2)/10}deg)
+          rotateY(${(rect.width/2 - e.clientX + rect.left)/10}deg)
+        `;
+      });
+      fruit.addEventListener('mouseleave', () => {
+        fruit.style.transform = 'rotateX(0) rotateY(0)';
       });
     });
   };
 
-  // Effets 3D sur les cartes sociales
-  const initSocialCards = () => {
-    const socialCards = document.querySelectorAll('.social-card');
-    
-    socialCards.forEach(card => {
-      const link = card.querySelector('.social-card__link');
-      if (!link) return;
-      
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const angleX = (y - centerY) / 10;
-        const angleY = (centerX - x) / 10;
-        
-        link.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(20px)`;
-      });
-      
-      card.addEventListener('mouseleave', () => {
-        link.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
-      });
-    });
-  };
+  // 3. Feux follets
+  const initFireflies = () => {
+    const container = document.querySelector('.fireflies');
+    if (!container) return;
 
-  // Effet de particules dynamiques
-  const initParticles = () => {
-    const particlesContainer = document.querySelector('.signature__particles');
-    if (!particlesContainer) return;
-    
-    const particleCount = 8;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      
-      // Position aléatoire
-      const posX = Math.random() * 100;
-      const posY = Math.random() * 100;
-      
-      // Taille aléatoire
-      const size = Math.random() * 3 + 1;
-      
-      // Durée d'animation aléatoire
-      const duration = Math.random() * 15 + 10;
-      
-      // Délai aléatoire
-      const delay = Math.random() * -20;
-      
-      particle.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        top: ${posY}%;
-        left: ${posX}%;
-        animation-duration: ${duration}s;
-        animation-delay: ${delay}s;
-      `;
-      
-      particlesContainer.appendChild(particle);
+    for (let i = 0; i < 5; i++) {
+      const firefly = document.createElement('div');
+      firefly.className = 'firefly';
+      Object.assign(firefly.style, {
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+        opacity: Math.random()
+      });
+      container.appendChild(firefly);
     }
   };
 
-  // Effet de lumière qui suit la souris
-  const initMouseLightEffect = () => {
-    const footer = document.querySelector('.footer');
-    if (!footer) return;
+  // 4. Flèche magique
+  const initMagicArrow = () => {
+    const arrow = document.querySelector('.magic-scroll-top');
+    if (!arrow) return;
 
-    footer.addEventListener('mousemove', (e) => {
-      const x = e.clientX / window.innerWidth * 100;
-      const y = e.clientY / window.innerHeight * 100;
-      
-      footer.style.background = `
-        radial-gradient(
-          circle at ${x}% ${y}%, 
-          rgba(108, 99, 255, 0.1) 0%, 
-          #1a1a2e 70%
-        )
-      `;
+    window.addEventListener('scroll', () => {
+      arrow.style.opacity = window.pageYOffset > 300 ? '1' : '0';
+      arrow.style.pointerEvents = window.pageYOffset > 300 ? 'auto' : 'none';
     });
+
+    arrow.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    setInterval(() => {
+      if (Math.random() > 0.8 && arrow.matches(':hover')) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        Object.assign(sparkle.style, {
+          left: `${Math.random() * 50 + 25}%`,
+          top: `${Math.random() * 30 + 50}%`
+        });
+        document.querySelector('.magic-sparkles')?.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 2000);
+      }
+    }, 500);
   };
 
-  // Initialisation de tous les composants
-  const initFooter = () => {
-    initWaveParallax();
-    initBackToTop();
-    initSocialCards();
-    initParticles();
-    initMouseLightEffect();
-  };
-
-  initFooter();
+  // Initialisation unique
+  (function init() {
+    initFairyButton();
+    initSocialFruits();
+    initFireflies();
+    initMagicArrow();
+  })();
 });

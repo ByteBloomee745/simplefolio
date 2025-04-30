@@ -1,403 +1,740 @@
-// Variables design système
-$primary: #6c63ff;
-$secondary: #ff3366;
-$dark: #1a1a2e;
-$light: #f8f9fa;
-$transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-$glass: rgba(255, 255, 255, 0.08);
+// Variables Dark Mode - À placer en haut du fichier
+$dark-text-primary: #ffffff;
+$dark-text-secondary: #e0e0e0;
 
-// Mixins
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+[data-theme="dark"] {
+  .footer {
+    background: linear-gradient(to bottom, $dark-night, $dark-shadow);
+    color: $dark-text-primary;
+
+    // Texte de la flèche
+    .magic-hint {
+      color: $dark-text-primary !important;
+      text-shadow: 0 0 5px $dark-magic;
+    }
+
+    // Signature
+    .magic-text {
+      color: $dark-text-primary !important;
+      background: none !important;
+      -webkit-text-fill-color: $dark-text-primary !important;
+    }
+
+    // Fruits sociaux
+    .social-fruit {
+      i {
+        color: $dark-text-primary !important;
+      }
+    }
+  }
+
+  // Correction d'opacité
+  .magic-scroll-top {
+    opacity: 1 !important;
+  }
 }
+// Palette de couleurs féeriques
+$fairy-pink: #ff9ff3;
+$magic-purple: #9b59b6;
+$starlight-blue: #48dbfb;
+$enchanted-green: #1dd1a1;
+$moonlight-yellow: #feca57;
+$dark-night: #0a3d62;
 
-@mixin pseudo-cover {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-// Base
 .footer {
   position: relative;
-  background: linear-gradient(135deg, darken($dark, 5%) 0%, $dark 100%);
-  color: $light;
-  padding: 5rem 0 2rem;
+  background: linear-gradient(to bottom, #0c2461, #1e3799);
+  color: white;
+  padding: 10rem 0 5rem;
   overflow: hidden;
-  
-  &__wave {
+  font-family: 'Dancing Script', cursive;
+
+  &__sky {
     position: absolute;
-    top: -50px;
-    left: 0;
     width: 100%;
-    height: 50px;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%236c63ff" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%236c63ff" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%236c63ff"/></svg>');
-    background-size: cover;
-    animation: waveMove 20s linear infinite;
+    height: 100%;
+    top: 0;
+    left: 0;
+    
+    .aurora {
+      position: absolute;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(
+        0deg,
+        rgba($magic-purple, 0.1) 0%,
+        rgba($starlight-blue, 0.2) 30%,
+        rgba($enchanted-green, 0.15) 60%,
+        transparent 100%
+      );
+      animation: auroraFlow 20s infinite alternate;
+    }
+    
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(1px 1px at 10% 20%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 20% 30%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 30% 40%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 40% 50%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 50% 60%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 60% 70%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 70% 80%, white 1px, transparent 1px),
+        radial-gradient(1px 1px at 80% 90%, white 1px, transparent 1px);
+      background-size: 200px 200px;
+      animation: starsTwinkle 5s infinite alternate;
+    }
+    
+    .shooting-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 2px white;
+        animation: shootingStar 10s linear infinite;
+      }
+      
+      &::before {
+        top: 10%;
+        left: -20px;
+        animation-delay: 2s;
+      }
+      
+      &::after {
+        top: 30%;
+        left: -20px;
+        animation-delay: 5s;
+      }
+    }
   }
   
-  &__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
+  &__mountains {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    bottom: 0;
+    left: 0;
+    
+    .mountain {
+      position: absolute;
+      bottom: 0;
+      background: linear-gradient(to bottom, #0a3d62, #1e3799);
+      clip-path: polygon(0% 100%, 20% 0%, 80% 0%, 100% 100%);
+      
+      &:nth-child(1) {
+        width: 300px;
+        height: 150px;
+        left: 5%;
+        filter: drop-shadow(0 0 10px rgba($starlight-blue, 0.5));
+      }
+      
+      &:nth-child(2) {
+        width: 400px;
+        height: 200px;
+        left: 30%;
+        filter: drop-shadow(0 0 15px rgba($magic-purple, 0.5));
+      }
+      
+      &:nth-child(3) {
+        width: 250px;
+        height: 180px;
+        left: 70%;
+        filter: drop-shadow(0 0 8px rgba($enchanted-green, 0.5));
+      }
+    }
   }
 }
 
-// Back to top orb
-.back-to-top {
+// Bouton Fée
+.fairy-button {
   position: absolute;
-  top: -3.5rem;
+  top: -100px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   
-  &__orb {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    background: linear-gradient(145deg, rgba($primary, 0.8), rgba($secondary, 0.6));
-    box-shadow: 0 0 30px rgba($primary, 0.4);
-    @include flex-center;
+  .fairy {
+    width: 60px;
+    height: 60px;
     position: relative;
-    overflow: hidden;
-    transition: $transition;
+    animation: fairyFloat 4s ease-in-out infinite;
     
-    &::before {
-      @include pseudo-cover;
-      background: radial-gradient(circle at 30% 30%, rgba(white, 0.8), transparent 70%);
-      opacity: 0.3;
+    &__wings {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(white, 0.8), transparent 70%);
+      animation: fairyWings 1s infinite alternate;
+    }
+    
+    &__body {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      background: $fairy-pink;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px $fairy-pink;
+    }
+    
+    &__glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba($fairy-pink, 0.4), transparent 70%);
+      animation: fairyGlow 3s infinite alternate;
+    }
+    
+    &__dust {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0;
+        animation: fairyDust 2s infinite;
+      }
+      
+      &::before {
+        top: 20%;
+        left: 20%;
+        animation-delay: 0.5s;
+      }
+      
+      &::after {
+        top: 30%;
+        right: 20%;
+        animation-delay: 1s;
+      }
     }
   }
   
-  .orb__inner {
-    width: 70%;
-    height: 70%;
-    border-radius: 50%;
-    background: rgba(white, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(white, 0.2);
-    @include flex-center;
-    animation: orbGlow 4s infinite alternate;
-  }
-  
-  .orb__icon {
-    font-size: 1.2rem;
-    color: white;
-    position: relative;
-    z-index: 2;
-    transition: $transition;
-  }
-  
-  &__ripple {
+  .fairy-trail {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: rgba(white, 0.1);
-    top: 0;
-    left: 0;
-    animation: ripple 3s infinite;
+    background: radial-gradient(circle, rgba($fairy-pink, 0.2), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
   }
   
   &:hover {
-    .back-to-top__orb {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 40px rgba($primary, 0.6);
+    .fairy {
+      animation: fairyFloatHover 1s ease-in-out infinite;
+    }
+    
+    .fairy-trail {
+      opacity: 1;
+      animation: fairyTrail 2s infinite;
+    }
+  }
+}
+
+// Arbre des réseaux sociaux
+.social-tree {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  
+  .tree {
+    position: absolute;
+    width: 40px;
+    height: 200px;
+    background: linear-gradient(to right, #3c6382, #0a3d62);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 150px;
+      background: radial-gradient(ellipse at center, #1e3799, transparent 70%);
+      bottom: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+    }
+  }
+  
+  .social-fruit {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    
+    &.linkedin { top: 30%; left: 50%; transform: translateX(-50%); }
+    &.github { top: 50%; left: 20%; }
+    &.email { top: 50%; right: 20%; }
+    
+    .fruit {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      transition: all 0.3s ease;
       
-      .orb__icon {
-        transform: translateY(-3px);
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, white, transparent 70%);
+        opacity: 0.3;
+      }
+    }
+    
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      color: white;
+      z-index: 2;
+    }
+    
+    .fruit__glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    &.linkedin {
+      .fruit { background: linear-gradient(135deg, #0077B5, #00a0dc); }
+      .fruit__glow { box-shadow: 0 0 20px #0077B5; }
+    }
+    
+    &.github {
+      .fruit { background: linear-gradient(135deg, #333, #6e5494); }
+      .fruit__glow { box-shadow: 0 0 20px #6e5494; }
+    }
+    
+    &.email {
+      .fruit { background: linear-gradient(135deg, #D44638, #ea4335); }
+      .fruit__glow { box-shadow: 0 0 20px #ea4335; }
+    }
+    
+    &:hover {
+      .fruit {
+        transform: scale(1.2) translateY(-10px);
+      }
+      
+      .fruit__glow {
+        opacity: 1;
+        animation: fruitGlow 1.5s infinite alternate;
       }
     }
   }
 }
 
-// Social grid
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-  gap: 1.5rem;
-  max-width: 500px;
-  margin: 3rem auto;
-}
-
-.social-card {
-  perspective: 1000px;
-  aspect-ratio: 1;
-  
-  &__link {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
-    transform-style: preserve-3d;
-    transition: $transition;
-  }
-  
-  &__bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 20%;
-    background: $glass;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(white, 0.1);
-    transition: $transition;
-    transform: translateZ(10px);
-  }
-  
-  &__icon {
-    position: relative;
-    z-index: 2;
-    font-size: 1.8rem;
-    color: white;
-    @include flex-center;
-    height: 100%;
-    transition: $transition;
-  }
-  
-  &__shine {
-    @include pseudo-cover;
-    border-radius: 20%;
-    background: radial-gradient(circle at 50% 0%, rgba(white, 0.5), transparent 70%);
-    opacity: 0;
-    transition: $transition;
-  }
-  
-  // Effets spécifiques par réseau
-  &.twitter:hover {
-    .social-card__bg {
-      background: linear-gradient(135deg, rgba(#1DA1F2, 0.7), transparent);
-    }
-  }
-  
-  &.linkedin:hover {
-    .social-card__bg {
-      background: linear-gradient(135deg, rgba(#0077B5, 0.7), transparent);
-    }
-  }
-  
-  &.github:hover {
-    .social-card__bg {
-      background: linear-gradient(135deg, rgba(#333, 0.7), transparent);
-    }
-  }
-  
-  &.freeCodeCamp:hover {
-    .social-card__bg {
-      background: linear-gradient(135deg, rgba(#E1306C, 0.7), rgba(#F77737, 0.7), transparent);
-    }
-  }
-  
-  &.email:hover {
-    .social-card__bg {
-      background: linear-gradient(135deg, rgba(#D44638, 0.7), transparent);
-    }
-  }
-  
-  &:hover {
-    .social-card__link {
-      transform: translateY(-10px) rotateX(10deg);
-    }
-    
-    .social-card__bg {
-      transform: translateZ(20px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    }
-    
-    .social-card__icon {
-      transform: scale(1.2) translateZ(30px);
-    }
-    
-    .social-card__shine {
-      opacity: 0.6;
-    }
-  }
-}
-
-// Signature
-.footer__signature {
-  margin-top: 4rem;
+// Signature enchantée
+.enchanted-signature {
+  margin-top: 100px;
   text-align: center;
   position: relative;
   
+  .magic-portal {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    .portal__ring {
+      width: 100%;
+      height: 100%;
+      border: 3px solid $starlight-blue;
+      border-radius: 50%;
+      animation: portalRotate 10s linear infinite;
+      box-shadow: 0 0 20px $starlight-blue;
+    }
+    
+    .portal__core {
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(circle, $magic-purple, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      animation: portalPulse 3s infinite alternate;
+    }
+  }
+  
   p {
-    font-size: 1rem;
-    color: rgba(white, 0.7);
+    font-size: 1.8rem;
     position: relative;
     z-index: 2;
-    font-weight: 300;
-    letter-spacing: 0.5px;
   }
   
-  .signature__highlight {
-    color: $secondary;
-    font-weight: 600;
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: $secondary;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.6s ease;
-    }
-    
-    &:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
+  .magic-text {
+    background: linear-gradient(to right, $fairy-pink, $starlight-blue);
+    -webkit-background-clip: text;
+    background-clip: text;
+        -webkit-text-fill-color: transparent;
+    animation: textGlow 2s infinite alternate;
   }
   
-  .signature__particles {
+  .sparkles {
+    display: inline-block;
+    animation: sparkleTwinkle 1s infinite alternate;
+  }
+  
+  .fireflies {
     position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
+    height: 100px;
+    top: 50%;
     left: 0;
-    overflow: hidden;
-    z-index: 1;
-  }
-  
-  .particle {
-    position: absolute;
-    background: rgba(white, 0.3);
-    border-radius: 50%;
-    animation: floatParticle linear infinite;
     
-    &:nth-child(1) {
-      width: 3px;
-      height: 3px;
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: $moonlight-yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 10px $moonlight-yellow;
+      animation: fireflyFloat 8s infinite;
+    }
+    
+    &::before {
       top: 20%;
-      left: 10%;
-      animation-duration: 15s;
+      left: 30%;
+      animation-delay: 1s;
     }
     
-    &:nth-child(2) {
-      width: 2px;
-      height: 2px;
-      top: 60%;
-      left: 80%;
-      animation-duration: 20s;
-    }
-    
-    &:nth-child(3) {
-      width: 4px;
-      height: 4px;
+    &::after {
       top: 40%;
-      left: 50%;
-      animation-duration: 12s;
+      right: 25%;
+      animation-delay: 3s;
     }
   }
 }
 
-// Animations
-@keyframes waveMove {
-  0% { background-position-x: 0; }
-  100% { background-position-x: 1000px; }
+// Animations magiques
+@keyframes auroraFlow {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 0.9; }
+  100% { transform: translateY(0) scale(1); opacity: 0.7; }
 }
 
-@keyframes orbGlow {
-  0% { box-shadow: inset 0 0 10px rgba(white, 0.2); }
-  100% { box-shadow: inset 0 0 30px rgba($primary, 0.4); }
+@keyframes starsTwinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
 }
 
-@keyframes ripple {
-  0% { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(2.5); opacity: 0; }
-}
-
-@keyframes floatParticle {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
+@keyframes shootingStar {
+  0% { transform: translateX(0) translateY(0); opacity: 0; }
   10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+  100% { transform: translateX(100vw) translateY(100px); opacity: 0; }
+}
+
+@keyframes fairyFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fairyWings {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(5deg); }
+}
+
+@keyframes fairyGlow {
+  0% { box-shadow: 0 0 30px $fairy-pink; }
+  100% { box-shadow: 0 0 50px $fairy-pink; }
+}
+
+@keyframes fairyDust {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(30px) scale(1); opacity: 0; }
+}
+
+@keyframes fruitGlow {
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes portalRotate {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+@keyframes portalPulse {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 5px $fairy-pink; }
+  100% { text-shadow: 0 0 15px $starlight-blue; }
+}
+
+@keyframes fireflyFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-30px) translateX(10px); }
+  50% { transform: translateY(0) translateX(20px); }
+  75% { transform: translateY(-20px) translateX(-10px); }
 }
 
 // Responsive
 @media (max-width: 768px) {
-  .social-grid {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 300px;
+  .social-tree {
+    width: 250px;
+    height: 250px;
+    
+    .social-fruit {
+      width: 50px;
+      height: 50px;
+    }
   }
   
-  .footer {
-    padding: 4rem 0 2rem;
-    
-    &__wave {
-      top: -30px;
-      height: 30px;
+  .enchanted-signature {
+    p {
+      font-size: 1.4rem;
     }
   }
 }
-// sass/sections/_footer.scss
+// Variables pour le mode sombre
+$dark-fairy: #5f5d6f;
+$dark-magic: #a29bfe;
+$dark-starlight: #00cec9;
+$dark-enchanted: #00b894;
+$dark-night: #2d3436;
+$dark-shadow: #1e272e;
+
 [data-theme="dark"] {
   .footer {
-    background: linear-gradient(to top, #0a0a0a 0%, #1a1a1a 100%);
+    background: linear-gradient(to bottom, $dark-night, $dark-shadow);
     
-    &__wave {
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%234cc9f0"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%234cc9f0"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%234cc9f0"/></svg>');
-    }
-
-    .back-to-top {
-      background: rgba(76, 201, 240, 0.2);
-      border: 1px solid var(--accent-color);
-      
-      &__orb {
-        background: radial-gradient(
-          circle at center,
-          rgba(76, 201, 240, 0.8) 0%,
-          rgba(76, 201, 240, 0.2) 70%
+    &__sky {
+      .aurora {
+        background: linear-gradient(
+          0deg,
+          rgba($dark-magic, 0.1) 0%,
+          rgba($dark-starlight, 0.2) 30%,
+          rgba($dark-enchanted, 0.15) 60%,
+          transparent 100%
         );
       }
     }
+    
+    &__mountains .mountain {
+      background: linear-gradient(to bottom, $dark-shadow, $dark-night);
+    }
+  }
+ //Texte
+ 
 
-    .social-card {
-      &__bg {
-        background: rgba(30, 30, 30, 0.7);
-        border: 1px solid #333;
+  // Flèche magique en mode sombre
+  .magic-scroll-top {
+    .magic-arrow {
+      .arrow-core {
+        background: $dark-fairy;
+        box-shadow: 0 0 15px $dark-fairy;
       }
       
-      &:hover {
-        .social-card__bg {
-          background: rgba(76, 201, 240, 0.3);
-        }
-      }
-      
-      &.linkedin:hover {
-        filter: drop-shadow(0 0 8px rgba(10, 102, 194, 0.6));
-      }
-      
-      &.github:hover {
-        filter: drop-shadow(0 0 8px rgba(240, 246, 252, 0.6));
-      }
-      
-      &.email:hover {
-        filter: drop-shadow(0 0 8px rgba(234, 67, 53, 0.4));
+      .arrow-wings {
+        border-color: $dark-magic;
       }
     }
-
-    .footer__signature {
-      color: #aaa;
-      
-      .particle {
-        background: var(--accent-color);
-      }
-      
-      img {
-        filter: invert(0.8);
+    
+    .magic-hint {
+      color: $dark-magic;
+      text-shadow: 0 0 5px $dark-fairy;
+    }
+    
+    &:hover {
+      .magic-arrow {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 0 25px $dark-fairy;
       }
     }
+  }
+  
+  // Arbre des réseaux en mode sombre
+  .social-tree {
+    .tree {
+      background: linear-gradient(to right, darken($dark-magic, 20%), darken($dark-fairy, 20%));
+    }
+    
+    .social-fruit {
+      &.linkedin .fruit { background: linear-gradient(135deg, darken(#0077B5, 10%), #0077B5); }
+      &.github .fruit { background: linear-gradient(135deg, darken(#333, 10%), #6e5494); }
+      &.email .fruit { background: linear-gradient(135deg, darken(#D44638, 10%), #ea4335); }
+    }
+  }
+  
+  // Signature en mode sombre
+  .enchanted-signature {
+    .magic-text {
+      background: linear-gradient(to right, $dark-magic, $dark-starlight);
+    }
+    
+    .magic-portal {
+      .portal__ring {
+        border-color: $dark-starlight;
+        box-shadow: 0 0 20px $dark-starlight;
+      }
+      
+      .portal__core {
+        background: radial-gradient(circle, $dark-magic, transparent 70%);
+      }
+    }
+  }
+}
+// Flèche magique pour remonter en haut
+.magic-scroll-top {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+  cursor: pointer;
+  text-decoration: none;
+  
+  &:hover {
+    .magic-arrow {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 0 25px $fairy-pink;
+      
+      .arrow-core {
+        background: lighten($fairy-pink, 10%);
+      }
+      
+      .arrow-wings {
+        border-color: lighten($magic-purple, 10%);
+      }
+    }
+    
+    .magic-sparkles {
+      .sparkle {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.magic-arrow {
+  width: 60px;
+  height: 80px;
+  position: relative;
+  margin: 0 auto 10px;
+  transition: all 0.3s ease;
+  
+  .arrow-core {
+    position: absolute;
+    width: 12px;
+    height: 60px;
+    background: $fairy-pink;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 6px;
+    box-shadow: 0 0 15px $fairy-pink;
+    transition: all 0.3s ease;
+  }
+  
+  .arrow-wings {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid $magic-purple;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+  }
+}
+
+.magic-sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  
+  .sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 5px 2px white;
+    animation: sparkleFloat 2s infinite;
+    
+    &:nth-child(1) {
+      top: 10px;
+      left: 10px;
+      animation-delay: 0.2s;
+    }
+    
+    &:nth-child(2) {
+      top: 15px;
+      right: 10px;
+      animation-delay: 0.5s;
+    }
+    
+    &:nth-child(3) {
+      bottom: 20px;
+      left: 25px;
+      animation-delay: 0.8s;
+    }
+  }
+}
+
+.magic-hint {
+  display: block;
+  color: $starlight-blue;
+  font-size: 1.2rem;
+  text-shadow: 0 0 5px $magic-purple;
+  transition: all 0.3s ease;
+}
+
+// Animation pour les étincelles
+@keyframes sparkleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(0.5);
+    opacity: 0;
   }
 }

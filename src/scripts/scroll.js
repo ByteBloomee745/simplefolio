@@ -31,3 +31,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// Fonction pour basculer entre les thèmes
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+// Vérifier le thème au chargement
+function checkTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+}
+
+// Appeler cette fonction au chargement de la page
+document.addEventListener('DOMContentLoaded', checkTheme);

@@ -1,3 +1,11 @@
+$dark-night: #0f0f0f;
+$dark-shadow: #1a1a1a; // ajoute aussi celle-ci si elle manque
+$white: #ffffff;
+$white-color: $white;
+$dark-magic: #2e0854; // exemple de couleur sombre "magique"
+
+
+
 // Palette féminine complète
 $primary-color: #FF9EB5;       // Rose poudré
 $secondary-color: #A5D8D1;     // Turquoise pastel
@@ -44,3 +52,44 @@ $mid-font-size: 2.5rem;
 $font-primary: 'Poppins', sans-serif;
 $font-secondary: 'Playfair Display', serif; // <- Ajoute ça si ce n'est pas défini
 
+// _variables.scss
+// Palette de couleurs - Light Mode
+$bleu-marine: #003366;
+$rose-poudre: #F2C6D4;
+$gris-clair: #D9D9D9;
+$blanc: #FFFFFF;
+$or-metallique: #D4AF37;
+
+// Palette de couleurs - Dark Mode
+$bleu-marine-dark: #4a89dc;
+$rose-poudre-dark: #6a4568;
+$gris-clair-dark: #2d3748;
+$blanc-dark: #1a202c;
+$or-metallique-dark: #f6ad55;
+
+// Variables CSS pour le thème
+:root {
+  // Light Theme
+  --bg-primary: #{$blanc};
+  --bg-secondary: #{$gris-clair};
+  --text-primary: #{$bleu-marine};
+  --text-secondary: #{darken($gris-clair, 60%)};
+  --accent-color: #{$or-metallique};
+  --accent-secondary: #{$rose-poudre};
+  --card-bg: #{$blanc};
+  --card-border: #{rgba($bleu-marine, 0.1)};
+  --shadow-color: #{rgba($bleu-marine, 0.1)};
+}
+
+[data-theme="dark"] {
+  // Dark Theme
+  --bg-primary: #{$blanc-dark};
+  --bg-secondary: #{$gris-clair-dark};
+  --text-primary: #{$blanc};
+  --text-secondary: #{$gris-clair};
+  --accent-color: #{$or-metallique-dark};
+  --accent-secondary: #{$rose-poudre-dark};
+  --card-bg: #{lighten($blanc-dark, 5%)};
+  --card-border: #{rgba($bleu-marine-dark, 0.2)};
+  --shadow-color: #{rgba($blanc-dark, 0.2)};
+}

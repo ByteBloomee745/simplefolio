@@ -13,6 +13,15 @@ ORDER: Base + Typography > Generar Layout + Grid > Page Layout > Components
 
 */
 @mixin respond($breakpoint) {
+  // exemple de contenu :
+  @if $breakpoint == phone {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+}
+
+@mixin respond($breakpoint) {
   // Phone-xs
   @if $breakpoint == phone-xs {
     @media (max-width: 20em) {

@@ -1,68 +1,113 @@
-// skills.scss - Version harmonisée avec la palette
+// skills.scss - Version améliorée avec votre palette
 .skills-section {
-    padding: 6rem 0;
-    background-color: $blanc;
-    position: relative;
-    overflow: hidden;
-  
-    .container {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba($blanc, 0.9) 0%, rgba($gris-clair, 0.3) 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%23F2C6D4" opacity="0.05" d="M0,0 L100,0 L100,100 L0,100 Z"/></svg>');
+      background-size: cover;
+      z-index: -1;
+  }
+
+  .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
-    }
-  
-    .section-title {
+  }
+
+  .section-title {
       text-align: center;
       font-family: $font-title;
       color: $bleu-marine;
       font-size: 2.5rem;
       margin-bottom: 3rem;
       position: relative;
-  
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+
       &::after {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 3px;
-        background: $or-metallique;
-        margin: 1rem auto 0;
+          content: '';
+          display: block;
+          width: 80px;
+          height: 3px;
+          background: linear-gradient(90deg, $or-metallique, $rose-poudre);
+          margin: 1rem auto 0;
+          transition: width 0.5s ease;
       }
-    }
+
+      &:hover::after {
+          width: 120px;
+      }
   }
-  
-  // Filtres
-  .skills-filter {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-  
-    .filter-btn {
-      padding: 0.6rem 1.5rem;
+}
+
+// Filtres améliorés
+.skills-filter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+
+  .filter-btn {
+      padding: 0.6rem 1.8rem;
       background: transparent;
       border: 2px solid $bleu-marine;
       border-radius: 50px;
       font-family: $font-body;
       color: $bleu-marine;
       cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      font-size: 0.95rem;
       font-weight: 600;
-  
-      &:hover, &.active {
-        background: $bleu-marine;
-        color: $blanc;
-        box-shadow: 0 5px 15px rgba($bleu-marine, 0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+
+      &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba($bleu-marine, 0.1), transparent);
+          transition: all 0.6s ease;
+          z-index: -1;
       }
-    }
+
+      &:hover, &.active {
+          background: $bleu-marine;
+          color: $blanc;
+          box-shadow: 0 5px 20px rgba($bleu-marine, 0.3);
+          transform: translateY(-2px);
+
+          &::before {
+              left: 100%;
+          }
+      }
+
+      &.active {
+          background: linear-gradient(135deg, $bleu-marine 0%, lighten($bleu-marine, 10%) 100%);
+          border-color: $bleu-marine;
+      }
   }
-  
-  // Compétences Techniques
-  .hard-skills {
-    margin-bottom: 4rem;
-  
-    h3 {
+}
+
+// Compétences Techniques améliorées
+.hard-skills {
+  margin-bottom: 4rem;
+
+  h3 {
       color: $bleu-marine;
       font-family: $font-title;
       margin-bottom: 2rem;
@@ -70,100 +115,157 @@
       align-items: center;
       gap: 0.8rem;
       font-size: 1.8rem;
-  
+      position: relative;
+      padding-bottom: 0.5rem;
+
       i {
-        color: $or-metallique;
-        font-size: 1.5rem;
+          color: $or-metallique;
+          font-size: 1.5rem;
+          transition: transform 0.3s ease;
       }
-    }
+
+      &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(90deg, $or-metallique, transparent);
+      }
+
+      &:hover i {
+          transform: rotate(15deg) scale(1.1);
+      }
   }
-  
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.skill-card {
+  background: $blanc;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 5px 25px rgba($bleu-marine, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  border: 1px solid rgba($bleu-marine, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, $or-metallique, $rose-poudre);
+      transition: width 0.3s ease;
   }
-  
-  .skill-card {
-    background: $blanc;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 5px 20px rgba($bleu-marine, 0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    border: 1px solid rgba($bleu-marine, 0.1);
-    opacity: 0;
-    transform: translateY(20px);
-  
-    &.visible {
+
+  &.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-  
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 30px rgba($bleu-marine, 0.1);
-      border-color: rgba($or-metallique, 0.3);
-    }
-  
-    .skill-icon {
+  }
+
+  &:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 35px rgba($bleu-marine, 0.15);
+      border-color: rgba($or-metallique, 0.4);
+
+      &::before {
+          width: 8px;
+      }
+  }
+
+  .skill-icon {
       width: 60px;
       height: 60px;
-      background: linear-gradient(135deg, $bleu-marine 0%, lighten($bleu-marine, 10%) 100%);
-      border-radius: 50%;
+      background: linear-gradient(135deg, $bleu-marine 0%, lighten($bleu-marine, 15%) 100%);
+      border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1.5rem;
       color: $blanc;
       font-size: 1.8rem;
-      box-shadow: 0 5px 15px rgba($bleu-marine, 0.2);
-    }
-  
-    h4 {
+      box-shadow: 0 8px 20px rgba($bleu-marine, 0.2);
+      transition: all 0.3s ease;
+  }
+
+  h4 {
       color: $bleu-marine;
       font-family: $font-title;
       margin-bottom: 1.5rem;
       font-size: 1.4rem;
       position: relative;
       padding-bottom: 0.5rem;
-  
+
       &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 2px;
-        background: $rose-poudre;
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 40px;
+          height: 3px;
+          background: $rose-poudre;
+          transition: width 0.3s ease;
       }
-    }
-  
-    .skill-items {
+  }
+
+  &:hover h4::after {
+      width: 80px;
+  }
+
+  .skill-items {
       list-style: none;
       padding-left: 0;
-  
+
       li {
-        position: relative;
-        padding-left: 1.5rem;
-        margin-bottom: 0.8rem;
-        color: darken($gris-clair, 50%);
-        font-family: $font-body;
-        font-size: 1rem;
-  
-        &::before {
-          content: '▹';
-          position: absolute;
-          left: 0;
-          color: $or-metallique;
-          font-size: 1.1rem;
-        }
+          position: relative;
+          padding-left: 1.5rem;
+          margin-bottom: 0.8rem;
+          color: darken($gris-clair, 50%);
+          font-family: $font-body;
+          font-size: 1rem;
+          transition: all 0.2s ease;
+
+          &::before {
+              content: '▹';
+              position: absolute;
+              left: 0;
+              color: $or-metallique;
+              font-size: 1.1rem;
+              transition: transform 0.2s ease;
+          }
+
+          &:hover {
+              color: $bleu-marine;
+              transform: translateX(5px);
+
+              &::before {
+                  transform: scale(1.3);
+                  color: $rose-poudre;
+              }
+          }
       }
-    }
   }
-  
-  // Compétences Personnelles
-  .soft-skills {
-    h3 {
+
+  &:hover .skill-icon {
+      transform: rotate(10deg) scale(1.1);
+      box-shadow: 0 12px 25px rgba($bleu-marine, 0.3);
+  }
+}
+
+// Compétences Personnelles améliorées
+.soft-skills {
+  h3 {
       color: $bleu-marine;
       font-family: $font-title;
       margin-bottom: 2.5rem;
@@ -171,196 +273,158 @@
       align-items: center;
       gap: 0.8rem;
       font-size: 1.8rem;
-  
+      position: relative;
+      padding-bottom: 0.5rem;
+
       i {
-        color: $rose-poudre;
-        font-size: 1.5rem;
+          color: $rose-poudre;
+          font-size: 1.5rem;
+          transition: transform 0.3s ease;
       }
-    }
+
+      &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: linear-gradient(90deg, $rose-poudre, transparent);
+      }
+
+      &:hover i {
+          transform: rotate(-15deg) scale(1.1);
+      }
   }
-  
-  .soft-skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+}
+
+.soft-skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.soft-skill-item {
+  background: $blanc;
+  border-radius: 12px;
+  padding: 1.8rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  box-shadow: 0 5px 25px rgba($bleu-marine, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  border: 1px solid rgba($rose-poudre, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba($rose-poudre, 0.03) 0%, rgba($rose-poudre, 0.01) 100%);
+      z-index: 0;
   }
-  
-  .soft-skill-item {
-    background: $blanc;
-    border-radius: 12px;
-    padding: 1.8rem;
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    box-shadow: 0 5px 20px rgba($bleu-marine, 0.05);
-    transition: all 0.3s ease;
-    border: 1px solid rgba($bleu-marine, 0.1);
-    opacity: 0;
-    transform: translateY(20px);
-  
-    &.visible {
+
+  &.visible {
       opacity: 1;
       transform: translateY(0);
-    }
-  
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba($bleu-marine, 0.1);
-      border-color: rgba($rose-poudre, 0.3);
-    }
-  
-    .soft-skill-icon {
+  }
+
+  &:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 35px rgba($rose-poudre, 0.15);
+      border-color: rgba($rose-poudre, 0.4);
+  }
+
+  .soft-skill-icon {
       flex-shrink: 0;
       width: 50px;
       height: 50px;
       background: linear-gradient(135deg, $rose-poudre 0%, lighten($rose-poudre, 10%) 100%);
-      border-radius: 50%;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $bleu-marine;
+      color: $blanc;
       font-size: 1.2rem;
-      box-shadow: 0 5px 15px rgba($rose-poudre, 0.2);
-    }
-  
-    .soft-skill-text {
+      box-shadow: 0 8px 20px rgba($rose-poudre, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+  }
+
+  .soft-skill-text {
       margin: 0;
       color: darken($gris-clair, 60%);
       font-family: $font-body;
       line-height: 1.7;
       font-size: 1.05rem;
-  
+      position: relative;
+      z-index: 1;
+
       .highlight {
-        color: $bleu-marine;
-        font-weight: 600;
-        font-style: italic;
+          color: $bleu-marine;
+          font-weight: 600;
+          font-style: italic;
+          position: relative;
+
+          &::after {
+              content: '';
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+              width: 100%;
+              height: 2px;
+              background: $or-metallique;
+              transform: scaleX(0);
+              transform-origin: right;
+              transition: transform 0.3s ease;
+          }
       }
-    }
   }
-  
-  // Responsive
-  @media (max-width: 768px) {
-    .skills-grid {
+
+  &:hover {
+      .soft-skill-icon {
+          transform: rotate(10deg) scale(1.1);
+          box-shadow: 0 12px 25px rgba($rose-poudre, 0.3);
+      }
+
+      .highlight::after {
+          transform: scaleX(1);
+          transform-origin: left;
+      }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .skills-section {
+      padding: 4rem 0;
+
+      .section-title {
+          font-size: 2rem;
+      }
+  }
+
+  .skills-grid, .soft-skills-container {
       grid-template-columns: 1fr;
-    }
-    
-    .soft-skills-container {
-      grid-template-columns: 1fr;
-    }
-    
-    .skills-filter {
+  }
+
+  .skills-filter {
       gap: 0.5rem;
-      
-      .filter-btn {
-        padding: 0.5rem 1.2rem;
-        font-size: 0.85rem;
-      }
-    }
-  
-    .skill-card, .soft-skill-item {
-      padding: 1.5rem;
-    }
-  }
-
-  // sass/sections/_skills.scss
-.skills-section {
-  background: linear-gradient(
-    to bottom,
-    var(--bg-secondary) 0%,
-    color-mix(in srgb, var(--bg-secondary), var(--bg-primary) 30%) 100%
-  );
-  color: var(--text-primary);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-  .section-title {
-    position: relative;
-    display: inline-block;
     
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--accent-color);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-    }
-
-    &.load-hidden.loaded::after {
-      transform: scaleX(1);
-    }
+      .filter-btn {
+          padding: 0.5rem 1.2rem;
+          font-size: 0.85rem;
+      }
   }
 
-  .skill-card {
-    background: color-mix(in srgb, var(--bg-primary), transparent 90%);
-    backdrop-filter: blur(10px);
-    border: 1px solid color-mix(in srgb, var(--text-primary), transparent 85%);
-    box-shadow: 
-      0 4px 20px -5px color-mix(in srgb, var(--accent-color), transparent 85%),
-      0 2px 10px var(--shadow-color);
-    transform: translateY(0);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-    &:hover {
-      background: var(--accent-color);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 
-        0 8px 25px -5px color-mix(in srgb, var(--accent-color), transparent 70%),
-        0 4px 15px var(--shadow-color);
-    }
-
-    .skill-icon {
-      transition: all 0.4s ease;
-      i {
-        color: var(--accent-color);
-      }
-    }
-
-    &:hover .skill-icon {
-      transform: rotateY(180deg) scale(1.2);
-      i {
-        color: white;
-      }
-    }
-  }
-
-  .filter-btn {
-    background: transparent;
-    border: 2px solid var(--accent-color);
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(var(--accent-color), 0.2),
-        transparent
-      );
-      transition: all 0.6s ease;
-      z-index: -1;
-    }
-
-    &.active {
-      background: var(--accent-color);
-      color: white;
-      box-shadow: 0 0 15px var(--accent-color);
-    }
-
-    &:hover::before {
-      left: 100%;
-    }
+  .skill-card, .soft-skill-item {
+      padding: 1.5rem;
   }
 }
